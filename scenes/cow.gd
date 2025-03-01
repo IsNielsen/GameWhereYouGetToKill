@@ -1,5 +1,3 @@
-
-
 extends CharacterBody2D
 
 const speed = 30
@@ -72,6 +70,8 @@ func move(delta):
 	if !is_chat:
 		velocity = dir * speed
 		move_and_slide()
+		
+
 
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -102,3 +102,9 @@ func die():
 	# Wait here for animation to end?
 	queue_free()
 	print("NPC died")
+
+
+func _on_dialogue_dialogue_finished():
+	is_chat = false
+	is_roam = true
+	pass # Replace with function body.

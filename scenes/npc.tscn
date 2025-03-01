@@ -340,11 +340,15 @@ animations = [{
 radius = 20.0
 
 [node name="npc" type="CharacterBody2D"]
+collision_layer = 255
 script = ExtResource("1_h1wc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+process_mode = 3
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_wf424")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionShape2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ax550")

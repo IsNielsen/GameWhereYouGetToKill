@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://brk6ne7p4vi6m"]
+[gd_scene load_steps=7 format=3 uid="uid://do7lsvhyqnoig"]
 
 [ext_resource type="PackedScene" uid="uid://dfrmq2cnlbrp7" path="res://scenes/npc.tscn" id="1_5w3mp"]
 [ext_resource type="Texture2D" uid="uid://deyeoyvcyl6jk" path="res://assets/Background/World of Solaria New Style DEMO.png" id="1_gq4n0"]
 [ext_resource type="PackedScene" uid="uid://dc8fflgde8u5j" path="res://Character/player.tscn" id="2_oiv7u"]
+[ext_resource type="PackedScene" uid="uid://laoj058aolam" path="res://scenes/cow.tscn" id="4_1u4u6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btjuq"]
 texture = ExtResource("1_gq4n0")
@@ -139,14 +140,22 @@ layer_3/name = "Layer3"
 layer_3/tile_data = PackedInt32Array(-851987, 327680, 8, -851975, 458752, 8, -458772, 327680, 8, 327698, 458752, 8, 393235, 458752, 8, 458772, 458752, 8, 524309, 458752, 8, 196621, 524288, 8, 1900549, 393216, 805306378, 1966086, 458752, 805306373, 2031622, 458752, 805306372, 1572871, 0, 805306372, 1638407, 0, 805306371, 1703943, 0, 805306370, 1769479, 0, 805306369, 1835015, 0, 805306368, 1507334, 65536, 805306373, 1572870, 65536, 805306372, 1638406, 65536, 805306371, 1703942, 65536, 805306370, 1769478, 65536, 805306369, 1835014, 65536, 805306368, 1507333, 131072, 805306373, 1572869, 131072, 805306372, 1638405, 131072, 805306371, 1703941, 131072, 805306370, 1769477, 131072, 805306369, 1835013, 131072, 805306368, 1572868, 196608, 805306372, 1638404, 196608, 805306371, 1703940, 196608, 805306370, 1769476, 196608, 805306369, 1835012, 196608, 805306368, 1507331, 262144, 805306373, 1572867, 262144, 805306372, 1638403, 262144, 805306371, 1703939, 262144, 805306370, 1769475, 262144, 805306369, 1835011, 262144, 805306368, 1507330, 327680, 805306373, 1572866, 327680, 805306372, 1638402, 327680, 805306371, 1703938, 327680, 805306370, 1769474, 327680, 805306369, 1835010, 327680, 805306368, 1572865, 393216, 805306372, 1638401, 393216, 805306371, 1703937, 393216, 805306370, 1769473, 393216, 805306369, 1835009, 393216, 805306368)
 
 [node name="Player" parent="." instance=ExtResource("2_oiv7u")]
-position = Vector2(-2056, -536)
-
-[node name="Player2" parent="." instance=ExtResource("2_oiv7u")]
-position = Vector2(-2088, -536)
-player_id = 2
+position = Vector2(-2105, -648)
 
 [node name="npc" parent="." instance=ExtResource("1_5w3mp")]
-position = Vector2(56, 0)
+position = Vector2(-2293, -610)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(0.962273, 0.979896)
+[node name="cow" parent="." instance=ExtResource("4_1u4u6")]
+position = Vector2(-2248, -577)
+collision_layer = 15
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(6, 6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" groups=["player"]]
+polygon = PackedVector2Array(-3438, -983, -3438, -457, -3195, -447, -3184, -716, -2600, -716, -2592, 28, -1460, 34, -1460, -989, -2597, -989, -2592, -845, -3190, -845, -3192, -991, -3526, -991, -3150, -1066, -1372, -1088, -1364, -81, -1364, 116, -2729, 116, -3667, -449, -3642, -1044)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-2380, -620, -2376, -609, -2391, -610, -2390.28, -571.983, -2389, -505, -2359.4, -504.852, -2277.4, -504.442, -2189, -504, -2189.79, -530.109, -2192.57, -621.844, -2195, -702, -2236.41, -702, -2375, -702, -2373.2, -649.246, -2372, -614, -2384, -638, -2385.19, -668.97, -2385.92, -687.942, -2387, -716, -2335.44, -716.252, -2182, -717, -2182, -676, -2182, -575, -2182, -498, -2221.47, -497.635, -2327.41, -496.654, -2398, -496, -2397.63, -542.018, -2397, -620, -2385, -616)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

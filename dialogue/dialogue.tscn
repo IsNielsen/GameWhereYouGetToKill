@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://di3vew5cwkgxr"]
+
+[ext_resource type="Script" path="res://scenes/dialoguecow.gd" id="1_e07xo"]
+[ext_resource type="Texture2D" uid="uid://dixw4omcbxajp" path="res://dialogue/Blue_rectangle.png" id="2_0pqqb"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e07xo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -60.4867
+offset_top = -53.0
+offset_right = -20.4867
+offset_bottom = -13.0
+texture = ExtResource("2_0pqqb")
+region_rect = Rect2(38, 34.5, 381, 237)
+
+[node name="Message" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 82.0
+offset_bottom = 80.0
+scale = Vector2(0.7, 0.7)
+text = "Moo..."
+tab_size = 3
