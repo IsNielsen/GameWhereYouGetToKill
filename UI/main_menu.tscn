@@ -83,7 +83,6 @@ layout_mode = 1
 stream = ExtResource("5_jew7k")
 volume_db = -14.054
 autoplay = true
-bus = &"Music"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
