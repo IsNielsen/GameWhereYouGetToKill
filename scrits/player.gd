@@ -1,14 +1,17 @@
 extends CharacterBody2D
 
+@export var player_id = 1
+
 var speed = 100
 
 var player_state
+
 
 func _ready():
 	$AnimatedSprite2D.modulate = Color(1, 0, 0)
 
 func _physics_process(delta: float) -> void:
-	var dir = Input.get_vector("left","right","up","down")
+	var dir = Input.get_vector("left_%s"% [player_id],"right_%s"%[player_id],"up_%s"%[player_id],"down_%s"%[player_id])
 	
 	if dir.x == 0 and dir.y == 0:
 		player_state = "idle"

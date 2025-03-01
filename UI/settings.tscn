@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://xpehg3tmsr5g"]
+
+[ext_resource type="Script" path="res://UI/settings.gd" id="1_02kjt"]
+[ext_resource type="PackedScene" uid="uid://tnv08rec5ihf" path="res://UI/settings_tab_container.tscn" id="1_rorph"]
+[ext_resource type="Theme" uid="uid://daoilkaqkgend" path="res://UI/main_menu.tres" id="1_wqfke"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wqfke")
+script = ExtResource("1_02kjt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Settings_Tab_Container2" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_rorph")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_pressed"]

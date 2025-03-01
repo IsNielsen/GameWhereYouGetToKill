@@ -2,6 +2,21 @@
 
 [ext_resource type="Script" path="res://scrits/day_night.gd" id="1_2cxxk"]
 
+[sub_resource type="Animation" id="Animation_cktra"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0855118, 0.386897, 0.399711, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_7j1mw"]
 resource_name = "day_night"
 length = 24.0
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.088078, 0.250872, 0.296114, 1), Color(0.368627, 0.501961, 0.517647, 1), Color(0.891889, 0.459536, 0.670966, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.889835, 0.546256, 0.581078, 1), Color(0.088078, 0.250872, 0.296114, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cktra"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.0855118, 0.386897, 0.399711, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8soik"]

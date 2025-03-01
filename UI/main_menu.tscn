@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2gwo1oqaig36"]
+
+[ext_resource type="Theme" uid="uid://daoilkaqkgend" path="res://UI/main_menu.tres" id="1_j3tin"]
+[ext_resource type="PackedScene" uid="uid://xpehg3tmsr5g" path="res://UI/settings.tscn" id="1_kbkjm"]
+[ext_resource type="Script" path="res://UI/menu.gd" id="1_smpws"]
+[ext_resource type="PackedScene" uid="uid://3tfu48q71oaa" path="res://UI/credits.tscn" id="3_ibc7n"]
+[ext_resource type="AudioStream" uid="uid://b4vbi77xkknde" path="res://assets/Shadows of Harmony ext v1.1.mp3" id="5_jew7k"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j3tin")
+script = ExtResource("1_smpws")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.193912, 0.0139279, 0.133195, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -349.53
+offset_bottom = -29.53
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 32
+text = "Play Game"
+
+[node name="settings" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="credits" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="exit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="Settings" parent="." instance=ExtResource("1_kbkjm")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("3_ibc7n")]
+visible = false
+layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jew7k")
+volume_db = -14.054
+autoplay = true
+bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = 100.0
+offset_right = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Bloodmoon Blues"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="exit_credits" from="Credits" to="." method="_on_exit_credits"]
