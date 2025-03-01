@@ -1,11 +1,37 @@
-[gd_scene load_steps=43 format=3 uid="uid://dfrmq2cnlbrp7"]
+[gd_scene load_steps=51 format=3 uid="uid://dfrmq2cnlbrp7"]
 
 [ext_resource type="Script" path="res://scrits/npc.gd" id="1_h1wc2"]
+[ext_resource type="Texture2D" uid="uid://bv4aqly1tt3h7" path="res://assets/Sprites/death.png" id="2_8cnyc"]
 [ext_resource type="Texture2D" uid="uid://q54l47vuolhe" path="res://assets/Sprites/idle.png" id="2_hhtt7"]
 [ext_resource type="Texture2D" uid="uid://biptka43ww4yb" path="res://assets/Sprites/walk.png" id="3_vboqj"]
+[ext_resource type="PackedScene" uid="uid://nfmhcbpw0k7w" path="res://NBC/dialog.tscn" id="4_td3qo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf424"]
 radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnvuy"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23rop"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0o7s"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc5au"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8w03"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8r6g"]
+atlas = ExtResource("2_8cnyc")
+region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu2hj"]
 atlas = ExtResource("2_hhtt7")
@@ -155,6 +181,29 @@ region = Rect2(560, 160, 80, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pnvuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23rop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0o7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc5au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8w03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8r6g")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eu2hj")
 }, {
 "duration": 1.0,
@@ -299,8 +348,7 @@ shape = SubResource("CircleShape2D_wf424")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ax550")
-animation = &"walk_l"
-frame_progress = 0.637119
+animation = &"died"
 flip_h = true
 
 [node name="chat_detection" type="Area2D" parent="."]
@@ -311,6 +359,9 @@ shape = SubResource("CircleShape2D_e78tk")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Dialog" parent="." instance=ExtResource("4_td3qo")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="chat_detection" to="." method="_on_chat_detection_body_entered"]
 [connection signal="body_exited" from="chat_detection" to="." method="_on_chat_detection_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
