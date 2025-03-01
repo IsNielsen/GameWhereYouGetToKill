@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://brk6ne7p4vi6m"]
+[gd_scene load_steps=6 format=3 uid="uid://do7lsvhyqnoig"]
 
 [ext_resource type="PackedScene" uid="uid://dfrmq2cnlbrp7" path="res://scenes/npc.tscn" id="1_5w3mp"]
 [ext_resource type="Texture2D" uid="uid://deyeoyvcyl6jk" path="res://assets/Background/World of Solaria New Style DEMO.png" id="1_gq4n0"]
