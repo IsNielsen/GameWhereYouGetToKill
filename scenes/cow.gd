@@ -12,6 +12,7 @@ var is_draining = false
 
 var player
 var player_can_chat = false
+var pid = 0
 
 enum {
 	IDLE,
@@ -22,8 +23,6 @@ enum {
 func _ready() -> void:
 	randomize()
 	start_pos = position
-	
-	
 
 func _physics_process(delta: float) -> void:
 	if health < 100 and !is_draining:
@@ -49,34 +48,33 @@ func _physics_process(delta: float) -> void:
 				dir = choose_dir([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
 			MOVE:
 				move(delta)
-	if player_can_chat and Input.is_action_just_pressed("chat"):
+	if player_can_chat and Input.is_action_just_pressed("chat_%s"%pid):
 		print("chatting")
 		is_roam = false
 		is_chat = true
 		$AnimatedSprite2D.play("idle")
-	if player_can_chat and Input.is_action_just_pressed("eat"):
+	if player_can_chat and Input.is_action_just_pressed("eat_%s"%pid):
 		print("eating")
 		is_roam = false
 		is_draining = true
 		$AnimatedSprite2D.play("died")
 	if is_draining:
 		reduce_health(.5)
-		
+
 func choose_dir(array):
 	array.shuffle()
 	return array.front()
-	
+
 func move(delta):
 	if !is_chat:
 		velocity = dir * speed
 		move_and_slide()
-		
-
 
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
 		player_can_chat = true
+		pid = player.player_id
 
 func _on_chat_detection_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -99,10 +97,11 @@ func die():
 	is_roam = false
 	is_chat = false
 	$AnimatedSprite2D.play("died")
+	# Award points to the player
+	player.points += 5  # Assuming the player object has a points variable
 	# Wait here for animation to end?
 	queue_free()
-	print("NPC died")
-
+	print("NPC died +%d"%player.points)
 
 func _on_dialogue_dialogue_finished():
 	is_chat = false
