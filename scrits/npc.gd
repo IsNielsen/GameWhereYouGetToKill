@@ -27,8 +27,10 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 	elif curr_state == 2 and !is_chat:
 		if dir.x == -1:
+			$AnimatedSprite2D.flip_h = true
 			$AnimatedSprite2D.play("walk_l")
 		if dir.x == 1:
+			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.play("walk_r")
 		if dir.y == -1:
 			$AnimatedSprite2D.play("walk_u")

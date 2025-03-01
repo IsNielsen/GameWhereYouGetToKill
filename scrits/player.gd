@@ -4,6 +4,9 @@ var speed = 100
 
 var player_state
 
+func _ready():
+	$AnimatedSprite2D.modulate = Color(1, 0, 0)
+
 func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("left","right","up","down")
 	
@@ -21,8 +24,10 @@ func animate(dir):
 		$AnimatedSprite2D.play("idle")
 	if player_state == "walking":
 		if dir.x == -1:
+			$AnimatedSprite2D.flip_h = true
 			$AnimatedSprite2D.play("walk_l")
 		if dir.x == 1:
+			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.play("walk_r")
 		if dir.y == -1:
 			$AnimatedSprite2D.play("walk_u")
