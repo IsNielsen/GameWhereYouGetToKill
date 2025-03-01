@@ -1,3 +1,5 @@
+
+
 extends CharacterBody2D
 
 const speed = 30
@@ -25,7 +27,7 @@ func _ready() -> void:
 	
 	
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if health < 100 and !is_draining:
 		health += .01
 	if curr_state == 0 or curr_state == 1:
@@ -68,7 +70,8 @@ func choose_dir(array):
 	
 func move(delta):
 	if !is_chat:
-		position += dir * speed * delta
+		velocity = dir * speed
+		move_and_slide()
 
 func _on_chat_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
