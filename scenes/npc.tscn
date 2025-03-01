@@ -300,7 +300,7 @@ shape = SubResource("CircleShape2D_wf424")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ax550")
 animation = &"walk_l"
-frame_progress = 0.490344
+frame_progress = 0.637119
 flip_h = true
 
 [node name="chat_detection" type="Area2D" parent="."]
