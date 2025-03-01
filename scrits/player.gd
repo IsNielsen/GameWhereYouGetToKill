@@ -1,14 +1,19 @@
 extends CharacterBody2D
 
 @export var player_id = 1
+@export var points = 0
 
 var speed = 100
 
 var player_state
 
+@onready var label: Label = $Label
+
 
 func _ready():
 	$AnimatedSprite2D.modulate = Color(1, 0, 0)
+func _process(delta: float) -> void:
+	label.text = "%d"%points
 
 func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("left_%s"% [player_id],"right_%s"%[player_id],"up_%s"%[player_id],"down_%s"%[player_id])
